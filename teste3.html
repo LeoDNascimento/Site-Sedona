@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  </head>
+  <body>
+    <!--Todas as DIVS que conteram o contéudo que será expandido devem possuir essa classe porque ela esconderá a DIV tornando o display nulo-->
+    <style>
+      .custom-collapse {
+        display: none;
+      }
+
+    </style>
+    <div class="container">
+      <!--Linha dos botões da parte de cima, todos eles possuem a classe custom-collapse-group o que vai permitir que eu Selecione os objetos <a> que tenham essa classe e impeça que eles se expandam mutualmente-->
+      <!--O Atributo href é o que vai dizer qual DIV que será expandida então cada botão tem um href unico que diferciona ao ID da div que tem que ser expandida-->
+      <div class="row">
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example1">button 1</a>
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example2">button</a>
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example3">button</a>
+      </div>
+
+      <!--DIV do primeiro botão, que por padrão está ATIVA por que eu coloquei a classe "active" que irá ficar controlando que é a atual expandida para quando outra for clicada eu esconder essa. Se você quiser pode remover o "active", ai todas as divs começarao escondidas -->
+      <div id="example1" class="card-panel custom-collapse">
+        <p class="">
+          One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements
+          on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy
+          pages, we've created a class that fluidly scales text size and line-height to optimize readability for the
+          user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
+        </p>
+      </div>
+
+      <div id="example2" class="card-panel custom-collapse">
+        <p class="">
+          To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the
+          button above to toggle off/on flow-text to see the difference!
+        </p>
+      </div>
+
+      <div id="example3" class="card-panel custom-collapse">
+        <p class="">
+          To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the
+          button above to toggle off/on flow-text to see the difference!
+        </p>
+      </div>
+      <!--Segunda linha de botões: o posicionamento é dado pela ordem que está sendo escrito no código então esse botoões estão na outra linha a seguir de outras divs.-->
+      <div class="row">
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example4">button</a>
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example5">button</a>
+        <a class="waves-effect waves-light btn custom-collapse-group" href="#example6">button</a>
+      </div>
+
+      <div id="example4" class="card-panel custom-collapse">
+        <p class="">
+          One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements
+          on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy
+          pages, we've created a class that fluidly scales text size and line-height to optimize readability for the
+          user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
+        </p>
+      </div>
+
+      <div id="example5" class="card-panel custom-collapse">
+        <p class="">
+          To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the
+          button above to toggle off/on flow-text to see the difference!
+        </p>
+      </div>
+
+      <div id="example6" class="card-panel custom-collapse">
+        <p class="">
+          To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the
+          button above to toggle off/on flow-text to see the difference!
+        </p>
+      </div>
+    </div>
+
+    <!--Estarei usando jquery nesse exemplo que é uma biblioteca de JavaScript que facilita muito a vida para capturar dos elementos do documento, alterar css em tempo de execução, efeitos, animações fáceis e mais. A chave é o seletor de query:  $('') 
+    para isso é preciso sempre colocar esse script abaixo -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      /*Funções no java script são meio estranhas mesmo.
+
+      A primeira coisa que é feita quando se usa jquery é perguntar ao navegador se o documento já carregou todo o básico
+      $(document) = seleciona o documento
+      $(document).ready(function{ <codigo aqui dentro> }) = quando o documento estiver pronto irá função que está dentro do parentesis
+
+      Cuidado com os parentesis, começa a ficar bagunçado, aconselho usar uma extensão pra colorir eles de forma orgnizada. Eu uso o prettier no visual studio
+
+      $('.active').show(); Primeiramente, se o documento está pronto eu irei selecionar a div que eu escrevi lá em cima que ddeve começar ativa. A seleção é igual ao seletor do CSS, a mesma coisa.    Então eu selecionei o elemento que tem a classe ".active" e usei o metodo "show" que faz aparecer na tela. Isso só sera executado uma vez a cada vez que a pagina for carregada. pq é só quando o documento está PRONTO
+
+      Depois, assim como java, ou linguagens OO, é feita a captura de um evento: click
+      $('.custom-collapse-group').click : nessa linha está sendo selecionado o elemento(s) que têm a classe '.custom-collapse-group' que são todas os botões que estão ligados um ao outro pelo menos nome de classe.
+
+      Dessa forma, após o clique do botão, irá executar a função que está dentro do parentesis (vou botar separado para melhor o entendimento)
+      function() {
+          let exampleNumber = $(this).attr('href');     
+          $('.active').slideUp();
+          $(exampleNumber).slideToggle();
+          $(exampleNumber).addClass('active');
+      })
+
+      let exampleNumber = $(this).attr('href');  || nessa linha está sendo declarada uma variavlel, variaveis em javascript podem ser declaradas com LET, VAR e CONST. As variaveis aqui não tem tipo. Vc pode botar o que quiser nelas. 
+
+      LET são vaiveis que podem ter o valor mudado, por exemplo vou usar pra guardar valores que serão somados a outros
+      VAR ngm usa mais, n presta
+      CONST são constantes
+
+      let exampleNumber = $(this).attr('href');  Nessa linha está sendo atribuído o href do objeto clicado
+      this é uma palavra reservada que signfica o objeto do escopo, ou seja, this dentro da função do clique, é o objeto que foi clicado dentre todos que eu selecionei com o $('.custom-collapse-group').click 
+      se this fosse usada fora dessa função e dentro da função $(document).ready(function{ this }), this seria o proprio documento
+
+      .attr() é uma função que pega um Atributo do objeto, pode ser href, ID, lista de classes ...
+
+      então clicando no botão 1:   let exampleNumber = $(this).attr('href') = '#example1'
+
+      $('.active').slideUp();  // Seleciona o elemento que está com a classe 'active' e usa uma função de Jquery que faz um slide pra cima, sendo assim, removendo o atual elemento ativo
+
+      $(exampleNumber).slideToggle(); // Seleciona o elemento dentro da variavel exampleNumber:  $('#example1')  e faz o toggle dele, dessa forma exibindo ele.
+
+      $(exampleNumber).addClass('active'); //faz com que o $('#example1') seja o novo ativo.
+
+      Ai toda vez que um botão for clicado, a função click ira ser ativada e por ai vai
+
+
+      */
+      $(document).ready(function() {
+        $('.active').show();
+
+        $('.custom-collapse-group').click(function() {
+          let exampleNumber = $(this).attr('href');
+          $('.active').slideUp();
+          $(exampleNumber).slideToggle();
+          $(exampleNumber).addClass('active');
+        });
+      });
+    </script>
+  </body>
+</html>

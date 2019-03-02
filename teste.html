@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="assets/css/social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="shortcut icon" href="imagens/logoicon.png" type="image/x-icon"/>
+
+    <style>
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+
+      .active,
+      .collapsible:hover {
+        background-color: #555;
+      }
+
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+      }
+    </style>
+
+    <!-- Compiled and minified JavaScript -->
+  </head>
+  <body>
+    <div class="container">
+      <h2>Collapsibles</h2>
+      <div class="row">
+        <div class="col s4">
+          <p>A Collapsible:</p>
+          <button class="collapsible" id="A">Open Collapsible</button>
+        </div>
+        <div class="col s4">
+          <p>Collapsible Set:</p>
+          <button class="collapsible" id="B">Open Section 1</button>
+        </div>
+        <div class="col s4">
+            <p>Collapsible Set:</p>
+          <button class="collapsible" id="C">Open Section 2</button>
+          <div class="content"></div>
+        </div>
+        <div class="row">
+          <div class="content" id="content">
+            <!-- added in js-->
+          </div>
+        </div>
+    </div>
+      <h2>Collapsibles</h2>
+      <div class="row">
+        <div class="col s4">
+          <p>A Collapsible:</p>
+          <button class="collapsible" id="D">Open Collapsible</button>
+        </div>
+        <div class="col s4">
+          <p>Collapsible Set:</p>
+          <button class="collapsible" id="E">Open Section 1</button>
+        </div>
+        <div class="col s4">
+            <p>Collapsible Set:</p>
+          <button class="collapsible" id="F">Open Section 2</button>
+          <div class="content"></div>
+        </div>
+        <div class="row">
+          <div class="content" id="content">
+            <!-- added in js-->
+          </div>
+        </div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+
+  var allButtons = document.querySelectorAll('button[class^=collapsible]');
+  console.log("Achou", allButtons.length, "button que a classe começa com collapsible");
+
+  for (var i = 0; i < allButtons.length; i++) {
+    allButtons[i].addEventListener('click', function() {
+
+      var newContent = this.getAttribute("id");
+      var content = document.getElementById('content');
+        
+      var texto = document.createElement("P");
+        if(newContent == "A"){
+          texto.innerHTML = 'AA';
+        }else if(newContent == "B"){
+          texto.innerHTML = 'BB';
+        }
+        else if(newContent == "C"){
+          texto.innerHTML = 'CC';
+        }
+        else if(newContent == "D"){
+          texto.innerHTML = 'DD';
+        }
+        else if(newContent == "E"){
+          texto.innerHTML = 'EE';
+        }
+        else if(newContent == "F"){
+          texto.innerHTML = 'FF';
+        }
+        document.getElementById('content').innerHTML = "";
+        document.getElementById('content').appendChild(texto);
+
+        if (content.style.display !== 'block') {
+          content.style.display = 'block';
+        }
+    });
+  }
+  </script>
+</html>

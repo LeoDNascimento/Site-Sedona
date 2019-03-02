@@ -1,0 +1,34 @@
+<ul><li>Home Design</li><li>Kitchen Renovations</li><li>Bathroom Renovations</li>              <li>Decks & Patios</li><li>Home Improvements</li><li>Heating, Ventilation & Air Conditioning (HVAC)</li><li>Roofing</li><li>Window & Door Installation</li><li>Flooring</li></ul>
+
+
+Home Design<br>Kitchen Renovations<br>Bathroom Renovations<br>Decks & Patios<br>Home Improvements<br>Heating, Ventilation & Air Conditioning (HVAC)<br>Roofing<br>Window & Door Installation<br>Flooring
+
+
+sedonahomes.ca@gmail.com
+1247homedepot
+
+                          <!--<script>
+let controle = 0;
+function myFunction() {
+    
+    if(controle ==0){
+      document.getElementById("exemplonumber").style.background = "yellow";
+        controle++;
+        }
+    else{
+      document.getElementById("exemplonumber").style.background = "#fff176";
+        controle--;
+        }
+}
+</script>-->
+<!--
+<script>
+  $(document).ready(function(){
+   $(".bot-click").click(function(){
+      $(".bot-click")
+      .removeClass("btn-danger"); // remove a classe de todos
+      $(this)
+      .addClass("btn-danger"); // adiciona a classe ao botão clicado
+   });
+});
+</script>-->
